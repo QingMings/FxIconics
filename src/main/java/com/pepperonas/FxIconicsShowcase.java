@@ -24,6 +24,7 @@ import com.pepperonas.fxiconics.gmd.FxFontGoogleMaterial;
 import com.pepperonas.fxiconics.met.FxFontMeteoconcs;
 import com.pepperonas.fxiconics.oct.FxFontOcticons;
 
+import com.pepperonas.fxiconics.seg.FxFontSegMDL2;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -152,6 +153,8 @@ public class FxIconicsShowcase extends Application {
             case 4: font = FxIconics.getMeteoconsFont(getFontSize());
                 ctr = FxFontMeteoconcs.Icons.values().length;
                 break;
+            case 5: font = FxIconics.getSegMDL2Font(getFontSize());
+                ctr = FxFontSegMDL2.Icons.values().length;
         }
 
         for (int i = 0; i < ctr; i++) {
@@ -252,6 +255,25 @@ public class FxIconicsShowcase extends Application {
                             label.setOnMouseClicked(
                                     event -> {
                                         copyToClipboard(FxFontMeteoconcs.Icons.values()[finalI].name());
+                                        addContextMenuToLabel(label);
+                                    });
+                        }
+                    });
+                    break;
+                case 5:
+                    if (!searchFilter.isEmpty()) {
+                        if (FxFontSegMDL2.Icons.values()[i].name().toLowerCase().toLowerCase().contains(searchFilter)) {
+                            label.setText(FxFontMeteoconcs.Icons.values()[i].toString());
+                        } else continue;
+                    }
+                    label.setText(FxFontSegMDL2.Icons.values()[i].toString());
+                    label.hoverProperty().addListener((observable, oldValue, newValue) -> {
+                        if (newValue) {
+                            Tooltip tt = new Tooltip(FxFontSegMDL2.Icons.values()[finalI].name());
+                            label.setTooltip(tt);
+                            label.setOnMouseClicked(
+                                    event -> {
+                                        copyToClipboard(FxFontSegMDL2.Icons.values()[finalI].name());
                                         addContextMenuToLabel(label);
                                     });
                         }

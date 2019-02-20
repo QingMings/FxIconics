@@ -81,6 +81,9 @@ public class FxIconics {
         return Font.loadFont(FxIconics.class.getResource("meteocons.ttf").toExternalForm(), fontSize);
     }
 
+    public static Font getSegMDL2Font(int fontSize) {
+        return Font.loadFont(FxIconics.class.getResource("SegMDL2.ttf").toExternalForm(), fontSize);
+    }
 
     public static String getLibraryName() {
         Properties prop = getProp();
